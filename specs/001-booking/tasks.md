@@ -15,7 +15,7 @@
 - ไฟล์ที่แตะ: `backend/app/db/models.py`, `backend/app/db/session.py`, `backend/app/db/migrations/001_init.py`, `backend/tests/conftest.py`
 - ต้องทำหลัง: ไม่มี
 - เสร็จเมื่อ: migration สร้างตาราง `slots`, `bookings` และ `audit_logs` ได้ และตาราง `bookings` ไม่มีเลขบัตรประชาชน
-- สถานะ: พร้อมทำ
+- สถานะ: เสร็จ รอทีมตรวจ
 
 ### T-02 สร้างบริการค้นหาช่วงเวลาว่าง
 - รองรับ: FR-BKG-01, FR-BKG-06, ASM-01, ASM-02

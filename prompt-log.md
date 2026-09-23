@@ -13,3 +13,13 @@
 - ผลลัพธ์: สร้าง `specs/001-booking/tasks.md` จำนวน 19 task โดยอ้างอิง FR, NFR, Constraint และ AC ตาม spec
 - Task ที่รอ Open Question: T-05, T-07, T-11 และ T-18 รอ Q-02 เรื่องรูปแบบและวิธีออกหมายเลขคิว
 - สิ่งที่ยังไม่ทำ: ยังไม่เริ่มทำ task ใด ๆ และไม่เดาคำตอบ Q-02
+
+---
+
+## 2569-09-23 คำสั่ง: /implement T-01
+
+- เครื่องมือ: Copilot ใน Codespaces
+- ไฟล์ที่สร้างหรือแก้: `backend/app/db/models.py`, `backend/app/db/session.py`, `backend/app/db/migrations/001_init.py`, `backend/tests/conftest.py`
+- ผลลัพธ์: สร้างโมเดล `slots`, `bookings` และ `audit_logs`, migration สำหรับสร้าง schema, session ที่อ่าน `DATABASE_URL` และ fixture SQLite in-memory
+- ผล test: schema check ผ่านและ `python -m compileall -q app tests` ผ่าน; `pytest -q` ยังไม่มี test ให้รันและคืนค่า `no tests ran`
+- สิ่งที่เกือบต้องเดาแต่ถามแทน: ไม่ได้เดารูปแบบหรือวิธีออกหมายเลขคิวตาม Q-02 จึงเว้น `queue_no` เป็น nullable ตาม plan
