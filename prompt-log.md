@@ -23,3 +23,23 @@
 - ผลลัพธ์: สร้างโมเดล `slots`, `bookings` และ `audit_logs`, migration สำหรับสร้าง schema, session ที่อ่าน `DATABASE_URL` และ fixture SQLite in-memory
 - ผล test: schema check ผ่านและ `python -m compileall -q app tests` ผ่าน; `pytest -q` ยังไม่มี test ให้รันและคืนค่า `no tests ran`
 - สิ่งที่เกือบต้องเดาแต่ถามแทน: ไม่ได้เดารูปแบบหรือวิธีออกหมายเลขคิวตาม Q-02 จึงเว้น `queue_no` เป็น nullable ตาม plan
+
+---
+
+## 2569-09-23 คำสั่ง: /implement T-16
+
+- เครื่องมือ: Copilot ใน Codespaces
+- ไฟล์ที่สร้างหรือแก้: `frontend/src/pages/SlotPicker.jsx`, `frontend/src/App.jsx`, `frontend/src/__tests__/SlotPicker.test.jsx`
+- ผลลัพธ์: สร้างหน้าจอเลือกวันที่และรหัสแพ็กเกจ แสดงช่วงเวลาพร้อมจำนวนที่นั่งจาก API จำลอง และโหลดรายการใหม่เมื่อเปลี่ยนแพ็กเกจตาม FR-BKG-01 และ FR-BKG-06
+- ผล test: `npm test` ผ่าน 2 test files และ 3 tests; `npm run build` ผ่าน
+- สิ่งที่เกือบต้องเดาแต่ถามแทน: ไม่ได้กำหนดรายการหรือรหัสแพ็กเกจเอง เพราะ spec ไม่ระบุ จึงใช้ช่องกรอกรหัสแพ็กเกจตามสัญญา `package_code` ใน plan
+
+---
+
+## 2569-09-23 คำสั่ง: แก้ proxy error หลัง /implement T-16
+
+- เครื่องมือ: Copilot ใน Codespaces
+- ไฟล์ที่สร้างหรือแก้: `frontend/src/App.jsx`
+- ผลลัพธ์: เปลี่ยนการเริ่มต้นของหน้าจอ T-16 ให้ใช้ API จำลองตาม plan จึงไม่เรียก proxy ไป `/slots` ก่อนที่ T-18 จะต่อ API จริง
+- ผล test: `npm test` ผ่าน 2 test files และ 3 tests; `npm run build` ผ่าน
+- สิ่งที่เกือบต้องเดาแต่ถามแทน: ตรวจแล้วว่า backend ยังไม่มี `app/main.py` และ port 8000 ไม่มี service จึงไม่เปิด backend แทน และคง `api/client.js` ไว้สำหรับ T-18
