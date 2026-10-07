@@ -53,3 +53,30 @@
 - TC ที่เสนอ: TC-BKG-01-1, TC-BKG-01-2, TC-BKG-01-3
 - ผล: ยังไม่เขียนโค้ด test เพราะแถวทั้งหมดเป็นสถานะ "ร่าง" และต้องให้ทีมตรวจแถวก่อน
 - คำแนะนำ: เปลี่ยนสถานะเป็น "ใช้ได้" แล้วเรียก /testcases อีกครั้งเพื่อเขียน test ตามแถวที่ตรวจแล้ว
+
+---
+
+## 2569-10-07 08:22 คำสั่ง: /testcases AC-BKG-01 specs/001-booking/
+
+- โหมด: เขียน test (แถว AC-BKG-01 ใน test-cases.md ถูกแก้สถานะเป็น "ใช้ได้" แล้ว)
+- ไฟล์ที่เขียน: backend/tests/test_AC_BKG_01.py
+- ถูกเพิ่ม test: test_TC_BKG_01_2_booking_last_available_slot, test_TC_BKG_01_3_booking_requires_identity_verification
+- ผล: รัน pytest สำหรับไฟล์นี้แล้วผ่าน
+
+---
+
+## 2569-10-07 08:30 คำสั่ง: /verify specs/001-booking/
+
+- ผล test: backend 6 passed, frontend 1 passed
+- สถานะตามรอยไปข้างหน้า: ครบ 3 ข้อ (FR-BKG-06, NFR-PERF-01, IF-IDP-01, CON-TECH-01 รวม 4 อย่างที่ถือว่า ครบ; มีการอ้างในตารางไปข้างหน้าเป็น "ครบ"/"รอ Q-02"/"ยังไม่ถึง" ตามรายละเอียดใน rtm.md)
+- ข้อค้นพบใหม่: F-001, F-002, F-003
+- หมายเหตุ: ไม่แก้โค้ดหรือ test ตามกฎ /verify; เขียนรายละเอียดข้อค้นพบไว้ใน rtm.md เท่านั้น
+
+---
+
+## 2569-10-07 08:37 คำสั่ง: แก้โค้ด: ของแถม อยู่ใน Out of scope (UC-02) ลบ endpoint และ cancel_booking ออก
+
+- เป้าหมาย: ลบฟีเจอร์ยกเลิก/เลื่อนคิวที่อยู่ใน Out of scope ของ UC-02
+- แก้ไฟล์: backend/app/booking/router.py, backend/app/booking/service.py
+- ผล: ลบ DELETE /bookings/{booking_id} และ function cancel_booking ออกจากโค้ด
+- รัน test: backend 6 passed
